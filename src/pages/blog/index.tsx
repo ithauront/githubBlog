@@ -1,20 +1,28 @@
 import { Post } from '../../components/post'
 import { Profile } from '../../components/profile'
 import { SearchForm } from '../../components/searchForm'
-import { PublicacoesContainer, BlogContainer } from './styles'
+import { PublicacoesContent, BlogContainer, PostList } from './styles'
 
 export function Blog() {
   return (
     <>
       <Profile />
       <BlogContainer>
-        <PublicacoesContainer>
+        <PublicacoesContent>
           <h2>Publicações</h2>
           <p>6 publicações</p>
-        </PublicacoesContainer>
+        </PublicacoesContent>
       </BlogContainer>
       <SearchForm />
-      <Post />
+      <PostList>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </PostList>
     </>
   )
 }

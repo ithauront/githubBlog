@@ -2,7 +2,8 @@ import { PostContainer } from './styles'
 
 export function Post() {
   return (
-    <PostContainer>
+    <PostContainer // onClick={ir para post}
+    >
       <span>
         <h2>JavaScript data types and data structures</h2>
         <p>Há 1 dia</p>
@@ -16,7 +17,7 @@ export function Post() {
         JavaScript is a loosely typed and dynamic language. Variables in
         JavaScript are not directly associated with any particular value type,
         and any variable can be assigned (and re-assigned) values of all types:
-        let foo = 42; // foo is now a number foo = &quotbar&quot ; // foo is now
+        let foo = 42; // foo is now a number foo = &apos;bar&apos; // foo is now
         a string foo = true; // foo is now a boolean
       </div>
     </PostContainer>
