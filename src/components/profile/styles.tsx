@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ProfileContainer = styled.div`
+export const BodyContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;

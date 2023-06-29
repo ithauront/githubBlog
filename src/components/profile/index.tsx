@@ -1,8 +1,8 @@
 import Logo from '../../assets/Logo.svg'
-import { ProfileContainer, ProfileContent } from './styles'
+import { BodyContainer, ProfileContent } from './styles'
 export function Profile() {
   return (
-    <ProfileContainer>
+    <BodyContainer>
       <ProfileContent>
         <img src={Logo} alt="img que vai ser pega do profile do github" />
 
@@ -35,6 +35,6 @@ export function Profile() {
           </div>
         </div>
       </ProfileContent>
-    </ProfileContainer>
+    </BodyContainer>
   )
 }
