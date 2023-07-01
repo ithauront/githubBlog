@@ -33,6 +33,8 @@ export function Profile() {
     fetchInfos()
   }, [])
 
+  const userName = infos?.url.slice(19)
+
   return (
     <BodyContainer>
       <ProfileContent>
@@ -54,12 +56,14 @@ export function Profile() {
           <div className="info">
             <span>
               <i className="fa-brands fa-github"></i>
-              <p>oArrobaDaPessoa</p>
+              <p>{userName}</p>
             </span>
-            <span>
-              <i className="fa-solid fa-building"></i>
-              <p>{infos?.company}</p>
-            </span>
+            {infos?.company && (
+              <span>
+                <i className="fa-solid fa-building"></i>
+                <p>{infos?.company}</p>
+              </span>
+            )}
             <span>
               <i className="fa-solid fa-user-group"></i>
               <p>{infos?.followers}</p>

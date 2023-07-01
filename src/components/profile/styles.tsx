@@ -17,7 +17,7 @@ export const ProfileContent = styled.div`
   background-color: ${(props) => props.theme['base-profile']};
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem;
 
@@ -31,6 +31,7 @@ export const ProfileContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    flex: 1;
     .title {
       display: flex;
       flex-direction: row;
