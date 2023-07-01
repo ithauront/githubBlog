@@ -22,7 +22,6 @@ export function PostPage() {
     if (titles) {
       titles.forEach((title) => {
         const titleWithoutMarker = title.slice(1)
-        console.log(titleWithoutMarker)
         const styledTitle = `<div>${titleWithoutMarker}</div>`
         restOfTextTitlesStyled = restOfTextTitlesStyled.replace(
           title,
