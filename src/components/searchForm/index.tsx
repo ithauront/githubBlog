@@ -2,8 +2,10 @@ import { SearchFormContainer } from './styles'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState, useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 import axios from 'axios'
+
+import { IssuesContext } from '../../context/contextIssues'
 
 const searchFormSchema = z.object({
   query: z.string(),
@@ -11,13 +13,9 @@ const searchFormSchema = z.object({
 
 type SearchFromInput = z.infer<typeof searchFormSchema>
 
-type Issue = {
-  title: string
-  text: string
-}
-
 export function SearchForm() {
-  const [issues, setIssues] = useState<Issue[]>([])
+  const { issues, setIssues } = useContext(IssuesContext)
+
   const { register, handleSubmit, getValues } = useForm<SearchFromInput>({
     resolver: zodResolver(searchFormSchema),
   })
