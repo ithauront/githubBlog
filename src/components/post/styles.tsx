@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
-export const PostContainer = styled.div`
+export const PostContainer = styled.button`
   width: 26rem;
   height: 16.25rem;
   border-radius: 10px;
   background: ${(props) => props.theme['base-post']};
   padding: 2rem;
   gap: 1rem;
+  cursor: pointer;
+  appearance: none;
+  border: transparent;
   &:hover {
     border: 2px solid ${(props) => props.theme['base-label']};
     div {
@@ -29,7 +32,7 @@ export const PostContainer = styled.div`
     }
 
     p {
-      width: 3.3125rem;
+      width: 4rem;
       color: ${(props) => props.theme['base-span']};
       font-size: 14px;
     }
@@ -43,6 +46,7 @@ export const PostContainer = styled.div`
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 
+    text-align: left;
     color: ${(props) => props.theme['base-text']};
     font-size: 16px;
     line-height: 180%;

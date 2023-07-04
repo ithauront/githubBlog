@@ -3,11 +3,12 @@ import axios from 'axios'
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
-interface Issue {
+export interface IssueProps {
   title: string
   text: string
-  number: number
+  number?: number
   date: string
+  onClick?: () => void
 }
 
 interface GithubIssue {
@@ -18,8 +19,8 @@ interface GithubIssue {
 }
 
 interface IssueContextType {
-  issues: Issue[]
-  setIssues: React.Dispatch<React.SetStateAction<Issue[]>>
+  issues: IssueProps[]
+  setIssues: React.Dispatch<React.SetStateAction<IssueProps[]>>
   fetchIssuesBySearchForm: (query: string) => Promise<void>
 }
 
@@ -30,7 +31,7 @@ interface IssuesProviderProps {
 export const IssuesContext = createContext({} as IssueContextType)
 
 export function IssuesProvider({ children }: IssuesProviderProps) {
-  const [issues, setIssues] = useState<Issue[]>([])
+  const [issues, setIssues] = useState<IssueProps[]>([])
 
   useEffect(() => {
     const fetchIssues = async () => {
@@ -55,7 +56,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
     }
     fetchIssues()
   }, [])
-
+  // ao usar os fetchIssuesBySearchForm desconfigura os post da postList, so aparece o titulo, e apos isso mesmo que se apague a busca ele permanece desconfigurado.
   const fetchIssuesBySearchForm = async (query: string) => {
     try {
       const response = await axios.get(

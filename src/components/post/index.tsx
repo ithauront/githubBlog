@@ -1,21 +1,18 @@
-import { useContext } from 'react'
+import { IssueProps } from '../../context/contextIssues'
 import { PostContainer } from './styles'
-import { IssuesContext } from '../../context/contextIssues'
-
-export function Post() {
-  const { issues } = useContext(IssuesContext)
-  if (issues.length === 0) {
-    return null
+import { useNavigate } from 'react-router-dom'
+export function Post({ title, date, text }: IssueProps) {
+  const navigate = useNavigate()
+  const handleClickPost = () => {
+    navigate('/post')
   }
-  const firstIssue = issues[0]
   return (
-    <PostContainer // onClick={ir para post}
-    >
+    <PostContainer onClick={handleClickPost}>
       <span>
-        <h2>{firstIssue.title}</h2>
-        <p>{firstIssue.date}</p>
+        <h2>{title}</h2>
+        <p>{date}</p>
       </span>
-      <div>{firstIssue.text}</div>
+      <div>{text}</div>
     </PostContainer>
   )
 }
