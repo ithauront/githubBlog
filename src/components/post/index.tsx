@@ -1,6 +1,8 @@
 import { IssueProps } from '../../context/contextIssues'
 import { PostContainer } from './styles'
 import { useNavigate } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
+
 export function Post({ title, date, text, comments, url }: IssueProps) {
   const navigate = useNavigate()
   const handleClickPost = () => {
@@ -12,7 +14,9 @@ export function Post({ title, date, text, comments, url }: IssueProps) {
         <h2>{title}</h2>
         <p>{date}</p>
       </span>
-      <div>{text}</div>
+      <div>
+        <ReactMarkdown>{text}</ReactMarkdown>
+      </div>
     </PostContainer>
   )
 }

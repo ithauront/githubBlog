@@ -4,6 +4,8 @@ import { PostTextContainer, PostTitle } from './styles'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export function PostPage() {
   const location = useLocation()
@@ -27,6 +29,15 @@ export function PostPage() {
     }
     fetchUserName()
   }, [])
+
+  const renderCodeBlock = (props: any) => {
+    const { language, value } = props
+    return (
+      <SyntaxHighlighter language={language} style={dracula}>
+        {value}
+      </SyntaxHighlighter>
+    )
+  }
 
   return (
     <>
@@ -63,7 +74,9 @@ export function PostPage() {
       <BodyContainer>
         <PostTextContainer>
           <span>
-            <ReactMarkdown>{text}</ReactMarkdown>
+            <ReactMarkdown components={{ code: renderCodeBlock }}>
+              {text}
+            </ReactMarkdown>
           </span>
         </PostTextContainer>
       </BodyContainer>
