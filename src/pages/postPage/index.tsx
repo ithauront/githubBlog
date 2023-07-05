@@ -3,11 +3,12 @@ import { BodyContainer } from '../../components/profile/styles'
 import { PostTextContainer, PostTitle } from './styles'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import ReactMarkdown from 'react-markdown'
 
 export function PostPage() {
   const location = useLocation()
-  const { title, date, comments, url } = location.state
-  const [formattedText, setFormattedText] = useState('')
+  const { title, date, comments, url, text } = location.state
+
   const [userName, setUserName] = useState<string>('')
   const navigate = useNavigate()
   const handleClickBack = () => {
@@ -25,48 +26,6 @@ export function PostPage() {
       }
     }
     fetchUserName()
-  }, [])
-
-  useEffect(() => {
-    const apiText =
-      '  Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to   list the built-in data structures available in JavaScript and what   properties they have. These can be used to build other data   structures. Wherever possible, comparisons with other languages are   drawn.<br /> # Dynamic typing <br /> JavaScript is a loosely typed and dynamic  language. Variables in JavaScript are not directly associated with any   particular value type, and any variable can be assigned (and   re-assigned) values of all types: `let foo = 42; // foo is now a number <br />foo = &apos;bar&apos; // foo is now a string <br />foo = true; // foo is now   a boolean`'
-    const firstSentence = apiText.match(/^(.*?[.?!…]+)/)
-    let restOfText = apiText
-
-    if (firstSentence) {
-      firstSentence.forEach((sentence) => {
-        const styledFirstSentence = `<strong>${sentence}</strong>`
-        restOfText = apiText.replace(sentence, styledFirstSentence)
-      })
-    }
-
-    const titles = restOfText.match(/#+\s+([\s\S]+?)(?=<br \/>|$)/g)
-    let restOfTextTitlesStyled = restOfText
-    if (titles) {
-      titles.forEach((title) => {
-        const titleWithoutMarker = title.slice(1)
-        const styledTitle = `<div>${titleWithoutMarker}</div>`
-        restOfTextTitlesStyled = restOfTextTitlesStyled.replace(
-          title,
-          styledTitle,
-        )
-      })
-    }
-    const codeBlocks = restOfTextTitlesStyled.match(/`(.*?)`/g)
-    let restOfTextTitlesAndCodeBlocksStyled = restOfTextTitlesStyled
-    if (codeBlocks) {
-      codeBlocks.forEach((codeBlock) => {
-        const codeWithoutBackticks = codeBlock.slice(1, -1)
-        const styledCodeBlock = `<pre>${codeWithoutBackticks}</pre>`
-        restOfTextTitlesAndCodeBlocksStyled =
-          restOfTextTitlesAndCodeBlocksStyled.replace(
-            codeBlock,
-            styledCodeBlock,
-          )
-      })
-    }
-
-    setFormattedText(restOfTextTitlesAndCodeBlocksStyled)
   }, [])
 
   return (
@@ -103,7 +62,9 @@ export function PostPage() {
       </BodyContainer>
       <BodyContainer>
         <PostTextContainer>
-          <span dangerouslySetInnerHTML={{ __html: formattedText }} />
+          <span>
+            <ReactMarkdown>{text}</ReactMarkdown>
+          </span>
         </PostTextContainer>
       </BodyContainer>
     </>
