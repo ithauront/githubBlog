@@ -56,13 +56,25 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
     }
     fetchIssues()
   }, [])
-  // ao usar os fetchIssuesBySearchForm desconfigura os post da postList, so aparece o titulo, e apos isso mesmo que se apague a busca ele permanece desconfigurado.
+
   const fetchIssuesBySearchForm = async (query: string) => {
     try {
       const response = await axios.get(
         `https://api.github.com/search/issues?q=${query}%20repo:iThauront/githubBlog`,
       )
-      setIssues(response.data.items)
+      const searchedIssuesData = response.data.items
+      const searchedIssues = searchedIssuesData.map(
+        (searchedIssuesData: GithubIssue) => ({
+          number: searchedIssuesData.number,
+          title: searchedIssuesData.title,
+          text: searchedIssuesData.body,
+          date: formatDistanceToNow(new Date(searchedIssuesData.updated_at), {
+            addSuffix: true,
+            locale: ptBR,
+          }),
+        }),
+      )
+      setIssues(searchedIssues)
     } catch (error) {
       console.error(error)
     }
