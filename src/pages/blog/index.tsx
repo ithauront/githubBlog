@@ -25,7 +25,7 @@ export function Blog() {
             title={issue.title}
             date={issue.date}
             text={issue.text}
-            //   onClick={handleClickPost} // temos que ver como o onClick vai funcionar para que va para a pagina post criando o que vem desse post que foi clicado.
+            comments={issue.comments}
           />
         ))}
       </PostList>

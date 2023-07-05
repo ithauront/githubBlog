@@ -1,9 +1,28 @@
 import { useState, useEffect } from 'react'
 import { BodyContainer } from '../../components/profile/styles'
 import { PostTextContainer, PostTitle } from './styles'
+import { useLocation } from 'react-router-dom'
+import axios from 'axios'
 
 export function PostPage() {
+  const location = useLocation()
+  const { title, date, comments } = location.state
   const [formattedText, setFormattedText] = useState('')
+  const [userName, setUserName] = useState<string>('')
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const response = await axios.get(
+          'https://api.github.com/users/ithauront',
+        )
+        setUserName(response.data.html_url.slice(19))
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchUserName()
+  }, [])
+
   useEffect(() => {
     const apiText =
       '  Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to   list the built-in data structures available in JavaScript and what   properties they have. These can be used to build other data   structures. Wherever possible, comparisons with other languages are   drawn.<br /> # Dynamic typing <br /> JavaScript is a loosely typed and dynamic  language. Variables in JavaScript are not directly associated with any   particular value type, and any variable can be assigned (and   re-assigned) values of all types: `let foo = 42; // foo is now a number <br />foo = &apos;bar&apos; // foo is now a string <br />foo = true; // foo is now   a boolean`'
@@ -60,20 +79,20 @@ export function PostPage() {
             </a>
           </div>
 
-          <h1>JavaScript data types and data structures</h1>
+          <h1>{title}</h1>
 
           <div className="info">
             <span>
               <i className="fa-brands fa-github"></i>
-              <p>oArrobaDaPessoa</p>
+              <p>{userName}</p>
             </span>
             <span>
               <i className="fa-solid fa-calendar-day"></i>
-              <p>Há 1 dia</p>
+              <p>{date}</p>
             </span>
             <span>
               <i className="fa-solid fa-comment"></i>
-              <p>5 comentários</p>
+              <p>{comments} comentários</p>
             </span>
           </div>
         </PostTitle>

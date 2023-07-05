@@ -9,13 +9,15 @@ export interface IssueProps {
   number?: number
   date: string
   onClick?: () => void
+  comments: number
 }
 
 interface GithubIssue {
   title: string
   body: string
   number: number
-  updated_at: string // chose the update ad not the create to reflect the last time the issues was used.
+  updated_at: string // chose the update_at and not the create to reflect the last time the issues was used.
+  comments: number
 }
 
 interface IssueContextType {
@@ -48,6 +50,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
             addSuffix: true,
             locale: ptBR,
           }),
+          comments: issuesData.comments,
         }))
         setIssues(extractedIssues)
       } catch (error) {
@@ -72,6 +75,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
             addSuffix: true,
             locale: ptBR,
           }),
+          comments: searchedIssuesData.comments,
         }),
       )
       setIssues(searchedIssues)
