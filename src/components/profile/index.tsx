@@ -38,10 +38,7 @@ export function Profile() {
   return (
     <BodyContainer>
       <ProfileContent>
-        <img
-          src={infos?.avatar}
-          alt="img que vai ser pega do profile do github"
-        />
+        <img src={infos?.avatar} alt="profile image do github" />
 
         <div>
           <div className="title">

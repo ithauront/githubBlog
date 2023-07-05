@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
 import { BodyContainer } from '../../components/profile/styles'
 import { PostTextContainer, PostTitle } from './styles'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export function PostPage() {
   const location = useLocation()
-  const { title, date, comments } = location.state
+  const { title, date, comments, url } = location.state
   const [formattedText, setFormattedText] = useState('')
   const [userName, setUserName] = useState<string>('')
+  const navigate = useNavigate()
+  const handleClickBack = () => {
+    navigate('/')
+  }
   useEffect(() => {
     const fetchUserName = async () => {
       try {
@@ -70,10 +74,10 @@ export function PostPage() {
       <BodyContainer>
         <PostTitle>
           <div className="links">
-            <a href="Link para pag inicial">
+            <button onClick={handleClickBack}>
               <i className="fa-solid fa-angle-left"></i>VOLTAR
-            </a>
-            <a href="Link para o github da pessoa">
+            </button>
+            <a href={url}>
               VER NO GITHUB
               <i className="fa-solid fa-arrow-up-right-from-square"></i>
             </a>

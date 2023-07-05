@@ -26,6 +26,7 @@ export function Blog() {
             date={issue.date}
             text={issue.text}
             comments={issue.comments}
+            url={issue.url}
           />
         ))}
       </PostList>

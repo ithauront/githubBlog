@@ -23,11 +23,15 @@ export const PostTitle = styled.div`
     justify-content: space-between;
     width: 50rem;
 
+    button,
     a {
       text-decoration: none;
       display: flex;
       gap: 0.5rem;
+      background: transparent;
+      border: none;
       color: ${(props) => props.theme.blue};
+      cursor: pointer;
 
       &:hover {
         border-bottom: 1px solid ${(props) => props.theme.blue};

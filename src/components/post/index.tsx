@@ -1,10 +1,10 @@
 import { IssueProps } from '../../context/contextIssues'
 import { PostContainer } from './styles'
 import { useNavigate } from 'react-router-dom'
-export function Post({ title, date, text, comments }: IssueProps) {
+export function Post({ title, date, text, comments, url }: IssueProps) {
   const navigate = useNavigate()
   const handleClickPost = () => {
-    navigate('/post', { state: { title, date, text, comments } })
+    navigate('/post', { state: { title, date, text, comments, url } })
   }
   return (
     <PostContainer onClick={handleClickPost}>

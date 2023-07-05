@@ -10,6 +10,7 @@ export interface IssueProps {
   date: string
   onClick?: () => void
   comments: number
+  url: string
 }
 
 interface GithubIssue {
@@ -18,6 +19,7 @@ interface GithubIssue {
   number: number
   updated_at: string // chose the update_at and not the create to reflect the last time the issues was used.
   comments: number
+  html_url: string
 }
 
 interface IssueContextType {
@@ -51,6 +53,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
             locale: ptBR,
           }),
           comments: issuesData.comments,
+          url: issuesData.html_url,
         }))
         setIssues(extractedIssues)
       } catch (error) {
@@ -76,6 +79,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
             locale: ptBR,
           }),
           comments: searchedIssuesData.comments,
+          url: searchedIssuesData.html_url,
         }),
       )
       setIssues(searchedIssues)
