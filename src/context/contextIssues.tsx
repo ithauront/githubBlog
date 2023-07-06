@@ -88,9 +88,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
     }
   }
 
-  useEffect(() => {
-    console.log(issues)
-  }, [issues])
+  useEffect(() => {}, [issues])
 
   const issueContextValue: IssueContextType = {
     issues,

@@ -74,24 +74,5 @@ export const PostTextContainer = styled.div`
   span {
     width: 50rem;
     line-height: 1.5;
-
-    div {
-      color: ${(props) => props.theme.blue};
-      text-decoration: underline;
-      margin-top: 2rem;
-      margin-bottom: 0;
-    }
-    pre {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      white-space: pre-wrap;
-      margin-top: 1rem;
-
-      border-radius: 2px;
-      padding: 1rem;
-      gap: 0.5rem;
-      background-color: ${(props) => props.theme['base-post']};
-    }
   }
 `

@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export function PostPage() {
   const location = useLocation()
@@ -30,12 +30,13 @@ export function PostPage() {
     fetchUserName()
   }, [])
 
-  const renderCodeBlock = (props: any) => {
-    const { language, value } = props
+  const renderCodeBlock = ({ children }: any) => {
     return (
-      <SyntaxHighlighter language={language} style={dracula}>
-        {value}
-      </SyntaxHighlighter>
+      <div>
+        <SyntaxHighlighter language="typescript" style={oneDark}>
+          {children}
+        </SyntaxHighlighter>
+      </div>
     )
   }
 
