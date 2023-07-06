@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BodyContainer } from '../../components/profile/styles'
 import { PostTextContainer, PostTitle } from './styles'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -39,7 +39,15 @@ export function PostPage() {
       </div>
     )
   }
-
+  const CustomHeading = ({ level, children }: any) => {
+    const HeadingComponent = `h${level}` as keyof React.JSX.IntrinsicElements
+    const headingClassName = `custom-heading-${level}`
+    return (
+      <HeadingComponent className={headingClassName}>
+        {children}
+      </HeadingComponent>
+    )
+  }
   return (
     <>
       <BodyContainer>
@@ -75,7 +83,13 @@ export function PostPage() {
       <BodyContainer>
         <PostTextContainer>
           <span>
-            <ReactMarkdown components={{ code: renderCodeBlock }}>
+            <ReactMarkdown
+              components={{
+                code: renderCodeBlock,
+                h1: CustomHeading,
+                h2: CustomHeading,
+              }}
+            >
               {text}
             </ReactMarkdown>
           </span>

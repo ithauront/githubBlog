@@ -75,4 +75,16 @@ export const PostTextContainer = styled.div`
     width: 50rem;
     line-height: 1.5;
   }
+  .custom-heading-1 {
+    color: ${(props) => props.theme.blue};
+    text-decoration: underline ${(props) => props.theme.blue};
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .custom-heading-2 {
+    color: ${(props) => props.theme.blue};
+    text-decoration: underline ${(props) => props.theme.blue};
+    font-weight: 400;
+    font-size: 1rem;
+  }
 `
