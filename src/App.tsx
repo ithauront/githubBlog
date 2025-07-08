@@ -10,7 +10,7 @@ export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <IssuesProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/githubBlog">
           <Router />
         </BrowserRouter>
       </IssuesProvider>
