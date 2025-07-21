@@ -2,7 +2,7 @@
 
 A modern blog application built with **React + TypeScript** where every post is actually a **GitHub Issue**. This project uses the GitHub API to fetch and render content directly from issues of a public repository, making it easy to write and manage content in Markdown.
 
-Users can browse blog posts, view details, and read rich formatted content — all powered by GitHub issues.
+Users can browse blog posts, view details, and read rich formatted content, all powered by GitHub issues.
 
 > 💡 Anyone with write access to the linked GitHub repository can post content by simply opening a new issue.
 
