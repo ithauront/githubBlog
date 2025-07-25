@@ -61,6 +61,17 @@ export const PostTitle = styled.div`
       }
     }
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 1rem;
+
+    .links {
+      width: 100%;
+    }
+    h1 {
+      font-size: 16px;
+    }
+  }
 `
 export const PostTextContainer = styled.div`
   display: flex;
@@ -86,5 +97,13 @@ export const PostTextContainer = styled.div`
     text-decoration: underline ${(props) => props.theme.blue};
     font-weight: 400;
     font-size: 1rem;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 1rem;
+    span {
+      width: 20rem;
+      padding: 1rem 0.5rem;
+    }
   }
 `

@@ -59,4 +59,12 @@ export const HeaderContainer = styled.header`
     filter: blur(4.375rem);
     opacity: 50%;
   }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    .effectLeft,
+    .effectRigth {
+      display: none;
+    }
+  }
 `

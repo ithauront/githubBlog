@@ -18,4 +18,10 @@ export const SearchFormContainer = styled.form`
       color: ${(props) => props.theme['base-label']};
     }
   }
+
+  @media (max-width: 768px) {
+    input {
+      width: 20rem;
+    }
+  }
 `

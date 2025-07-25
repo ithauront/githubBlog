@@ -5,6 +5,9 @@ export const BlogContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    padding: 12.25rem 1rem 1rem 0;
+  }
 `
 
 export const PublicacoesContent = styled.span`
@@ -23,6 +26,10 @@ export const PublicacoesContent = styled.span`
     line-height: 160%;
     color: ${(props) => props.theme['base-span']};
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `
 export const PostList = styled.div`
   display: flex;
@@ -32,4 +39,8 @@ export const PostList = styled.div`
 
   gap: 2rem;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `

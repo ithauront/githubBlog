@@ -75,4 +75,25 @@ export const ProfileContent = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+    img {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 8px;
+    }
+
+    div {
+      .title {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        h1 {
+          font-size: 18px;
+        }
+      }
+    }
+  }
 `

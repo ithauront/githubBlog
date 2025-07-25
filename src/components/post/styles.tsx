@@ -51,4 +51,19 @@ export const PostContainer = styled.button`
     font-size: 16px;
     line-height: 180%;
   }
+
+  @media (max-width: 768px) {
+    width: 20rem;
+    padding: 0.5rem;
+    div {
+      width: 18rem;
+    }
+    h2 {
+      width: 15rem;
+      text-align: left;
+      color: ${(props) => props.theme['base-title']};
+      font-size: 20px;
+      line-height: 100%;
+    }
+  }
 `
